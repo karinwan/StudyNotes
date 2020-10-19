@@ -1,11 +1,11 @@
 # Git
 
 ## Initialize a new repository in github
-1. On the website: 
+#### 1. On the website: 
 - Click on the '+' botton on the right-top of the webpage to create a new repository;
 - Set repo name, description, and create README.md by default. 
 
-2. On Git Bash:
+#### 2. On Git Bash:
 - Write your description into a new file called <README.md>:
 ```
 echo "# StudyNotes" >> README.md
