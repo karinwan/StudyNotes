@@ -1,4 +1,4 @@
-# Git
+# Github
 
 ## Initialize a new repository in github
 #### 1. On the website: 
