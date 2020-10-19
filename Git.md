@@ -1,8 +1,6 @@
 # Git
 
-## Github: 
-
-### Initialize a new repository in github
+## Initialize a new repository in github
 1. On the website: 
 - Click on the '+' botton on the right-top of the webpage to create a new repository;
 - Set repo name, description, and create README.md by default. 
@@ -37,7 +35,7 @@ git remote add origin https://github.com/karinwan/<repository_name>.git
 git push -u origin main
 ```
 
-### Other git commands
+## Other git commands
 - Copy all files from github repository to local: 
 ```
 git clone <url>
