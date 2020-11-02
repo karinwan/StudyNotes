@@ -1,6 +1,6 @@
 # MySQL
 
-## Installation
+## Installation - Server
 ### On WLS(utunbu):
 #### 1. Install: 
 ```
@@ -84,3 +84,13 @@ Threads: 1  Questions: 12  Slow queries: 0  Opens: 115  Flush tables: 1  Open ta
 ---
 ###### Reference: Tutorial on [How To Install MySQL on Ubuntu 18.04](https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-18-04#step-1-%E2%80%94-installing-mysql).
 ---
+
+## Installation - Client
+### On WLS(utunbu):
+#### Install: 
+```
+sudo apt update
+```
+```
+sudo apt install mysql-client
+```
