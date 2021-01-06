@@ -35,6 +35,37 @@ git remote add origin https://github.com/karinwan/<repository_name>.git
 git push -u origin main
 ```
 
+## Create a new branch
+- Update master
+```
+git pull
+```
+- Create the branch on your local machine and switch in this branch
+```
+git git checkout -b [branch_name]
+```
+- Push the new branch on GitHUb:
+```
+git push origin [branch_name]
+```
+- Add a new remote to the branch
+```
+git remote add [remote_name] [branch_name]
+```
+- Push changes from your commit into your branch
+```
+git push [remote_name] [url]
+```
+- Update branch with the original branch from official repository
+```
+git fetch [remote_name]
+```
+- Merge changes
+```
+git merge [remote_name]/develop
+```
+
+
 ## Other git commands
 - Copy all files from github repository to local: 
 ```
@@ -47,6 +78,14 @@ git status
 - List all commits made: 
 ```
 git log
+```
+- List all branches created:
+```
+git branch -a
+```
+- Delete a branch on GitHub:
+```
+git push origin :[branch_name]
 ```
 
 
