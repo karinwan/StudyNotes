@@ -18,3 +18,8 @@
  pip 9.0.1 from /usr/lib/python3/dist-packages (python 3.6)
  ```
  
+## Install module
+Run the commands on WLS:
+```
+python3 -m pip install <module_name>
+```
