@@ -1,5 +1,5 @@
 # Git
-## Upgrade Git in Ubuntu
+## Update Git version in Ubuntu
 
 Run the following commands: 
 Do this only if your system doesn't have `add-apt-repository: `
