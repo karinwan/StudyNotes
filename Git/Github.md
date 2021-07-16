@@ -75,6 +75,10 @@ git clone <url>
 ```
 git status
 ```
+- Overwrite local files to force "git pull": 
+```
+git reset --hard origin/master
+```  
 - List all commits made: 
 ```
 git log
