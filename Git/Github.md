@@ -42,7 +42,7 @@ git pull
 ```
 - Create the branch on your local machine and switch in this branch
 ```
-git git checkout -b [branch_name]
+git checkout -b [branch_name]
 ```
 - Push the new branch on GitHUb:
 ```
