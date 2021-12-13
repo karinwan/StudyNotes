@@ -91,5 +91,38 @@ git branch -a
 ```
 git push origin :[branch_name]
 ```
+  
 
+## Working with Git
+- Create Branch in Git website with [branch_name]
+- Create local branch:
+```
+git checkout -b [branch_name]
+```
+- Connect local branch with git branch:
+```
+git pull origin [branch_name]
+```
+- After making changes:
+```
+git status
+git add [file_name]
+git commit -m "[Message]"
+git push origin [branch_name]
+```
+  
+### When finishing working on the current branch
+```
+git checkout master
+```
+  
+### Store current changes
+```
+git stash
+```
+- To get the latest stored changes back:
+```
+git stash pop
+```
+  
 
