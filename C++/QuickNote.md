@@ -55,10 +55,11 @@ printf("Hello! \n");
 char buffer[50];
 
 sprintf(buffer, "This is buffer. ");
-  
-// The string "This is buffer. " is stored 
-// into buffer instead of printing on stdout
- 
+```
+
+The string "This is buffer. " is stored into buffer instead of printing on stdout. 
+
+```
 printf("%s", buffer);
 
 -> This is buffer. 
