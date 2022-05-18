@@ -21,6 +21,19 @@ strlen(mystr) -> 4
 
 ## Print
 
+| Format Specifier | Description |
+| ----------- | ----------- |
+| %c | single character |
+| %s | character string |
+| %d / %i | signed integer to decimal representation |
+| %u | unsigned integer to decimal representation |
+| %o | unsigned integer to octal representation |
+| %x | unsigned integer to hexadecimal representation |
+| %f | floating-point number to the decimal representation |
+| %p | printing the value of a pointer  |
+| % |  |
+
+
 ### cout
 
     #include<stdio.h>
