@@ -34,11 +34,11 @@ strlen(mystr) -> 4
 | .number | For s: the maximum number of characters to be printed |
 | % |  |
 
-'''
+```
 printf("Print string: %.4s", "abcdefg")
 
 -> abcd
-'''
+```
 
 
 ### cout
