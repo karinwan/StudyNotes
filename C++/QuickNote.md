@@ -31,7 +31,14 @@ strlen(mystr) -> 4
 | %x | unsigned integer to hexadecimal representation |
 | %f | floating-point number to the decimal representation |
 | %p | printing the value of a pointer  |
+| .number | For s: the maximum number of characters to be printed |
 | % |  |
+
+'''
+printf("Print string: %.4s", "abcdefg")
+
+-> abcd
+'''
 
 
 ### cout
