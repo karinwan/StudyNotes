@@ -85,3 +85,25 @@ printf("%s", buffer);
 - Print the string content in file but not on stdout console
 
 #### [ref](https://www.geeksforgeeks.org/difference-printf-sprintf-fprintf/)
+
+## Memory
+
+### memset
+
+    void * memset ( void * ptr, int value, size_t num );
+
+- Fill block of memory
+- Sets the first num bytes of the block of memory pointed by ptr to the specified value (interpreted as an unsigned char).
+
+```
+#include <stdio.h>
+#include <string.h>
+
+char str[] = "almost every programmer should know memset!";
+
+memset (str,'-',6);
+
+puts (str);
+
+-> ------ every programmer should know memset!
+```
