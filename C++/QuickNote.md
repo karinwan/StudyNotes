@@ -1,5 +1,27 @@
 # C++
 
+## Main
+
+    int main(int argc, char *argv[])
+
+### argc
+
+- Argument count
+- Number of strings pointed to by argv. 
+- 1 + # of arguments (1: name of the program)
+
+### argv
+
+- Argument vector
+- program name, arg1, arg2, ..., NULL
+
+```
+myprog arg1 arg2 arg3
+
+argc -> 4
+argv -> myprog, arg1, arg2, arg3, NULL
+```
+
 ## String
 
 ### strlen
