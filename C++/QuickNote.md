@@ -136,3 +136,15 @@ puts (str);
 
 -> ------ every programmer should know memset!
 ```
+
+## File
+
+### fgetc
+
+    int fgetc(FILE *stream)
+
+- gets the next character (an unsigned char) from the specified stream
+
+
+
+
