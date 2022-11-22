@@ -65,7 +65,6 @@ git fetch [remote_name]
 git merge [remote_name]/develop
 ```
 
-
 ## Other git commands
 - Copy all files from github repository to local: 
 ```
@@ -124,5 +123,12 @@ git stash
 ```
 git stash pop
 ```
-  
 
+### Merge master into branch
+```
+git checkout main
+git pull
+git checkout validator
+git merge main
+git push
+```
