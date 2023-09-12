@@ -1,3 +1,10 @@
+# Arithmatic
+
+## absolute value
+```
+abs()
+```
+
 # Loop
 
 ### range
@@ -11,6 +18,18 @@ range(start, stop, step)
 - **step**	(optional) An integer number specifying the incrementation. Default is 1
 
 # Data Structure
+
+## List
+
+### Sum
+```
+sum(list)
+```
+
+### Length
+```
+len(list)
+```
 
 ## Set
 
