@@ -7,7 +7,7 @@ abs()
 
 # Loop
 
-### range
+#### range
 
 ```
 range(start, stop, step)
@@ -27,12 +27,12 @@ NumberList = [1, 2, 3, 4, 5]
 ZeroList = [0] * 5
 ```
 
-### Sum
+#### Sum
 ```
 sum(list)
 ```
 
-### Length
+#### Length
 ```
 len(list)
 ```
@@ -65,7 +65,7 @@ EmptyDict = {}
 InfoDict = { "name" : "Alice", "age" : 20, "country" : "CA"}
 ```
 
-### Constructor
+#### Constructor
 ```
 ColorDict = dict(yellow = "energy", blue = "sadge", green = "natural")
 ```
