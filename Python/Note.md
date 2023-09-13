@@ -1,5 +1,11 @@
 # Arithmatic
 
+## minimum and maximum
+```
+min(0, 1, 2)
+max(list)
+```
+
 ## absolute value
 ```
 abs()
