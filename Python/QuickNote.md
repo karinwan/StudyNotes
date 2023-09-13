@@ -21,6 +21,12 @@ range(start, stop, step)
 
 ## List
 
+```
+EmptyList = []
+NumberList = [1, 2, 3, 4, 5]
+ZeroList = [0] * 5
+```
+
 ### Sum
 ```
 sum(list)
@@ -38,6 +44,30 @@ items = set()
 items.add(item)
 if A in items:
   ...
+```
+
+## Tuple
+
+- ordered
+- unchangeable
+- allow duplicates
+```
+EmptyTuple = ()
+FruitTuple = ("apple", "banana", "peach", "kiwi")
+```
+
+## Dictionary
+- ordered
+- changeable
+- do not allow duplicates
+```
+EmptyDict = {}
+InfoDict = { "name" : "Alice", "age" : 20, "country" : "CA"}
+```
+
+### Constructor
+```
+ColorDict = dict(yellow = "energy", blue = "sadge", green = "natural")
 ```
 
 
