@@ -1,5 +1,16 @@
 # Arithmatic
 
+```
+# Floor division
+A // B
+
+# Sqare root
+sqrt(A)
+
+# Square
+A ** 2
+```
+
 ## minimum and maximum
 ```
 min(0, 1, 2)
