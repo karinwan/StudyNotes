@@ -58,6 +58,18 @@ if A in items:
   ...
 ```
 
+#### Converter
+List -> Set
+```
+setA = set(listA)
+```
+
+#### Intersection
+```
+setC = setA.intersection(setB)
+setC = setA & setB
+```
+
 ## Tuple
 
 - ordered
