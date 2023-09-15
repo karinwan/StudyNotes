@@ -23,6 +23,12 @@ range(start, stop, step)
 - **stop**	(required) An integer number specifying at which position to stop (not included).
 - **step**	(optional) An integer number specifying the incrementation. Default is 1
 
+#### Enumerate
+Iterating through list with index
+```
+for idx, x in enumerate(list):
+```
+
 # Data Structure
 
 ## List
