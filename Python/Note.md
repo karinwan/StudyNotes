@@ -105,4 +105,12 @@ InfoDict = { "name" : "Alice", "age" : 20, "country" : "CA"}
 ColorDict = dict(yellow = "energy", blue = "sadge", green = "natural")
 ```
 
+#### Counter
+A Counter is a dict subclass for counting hashable objects. It is a collection where elements are stored as dictionary keys and their counts are stored as dictionary values. Counts are allowed to be any integer value including zero or negative counts.
+```
+Counter("aabbbccccd")
+# {a:2, b:3, c:4, d:1}
+```
+
+
 
