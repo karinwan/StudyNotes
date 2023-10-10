@@ -87,6 +87,16 @@ sum(list)
 len(list)
 ```
 
+#### Convert string to list and list to string
+```
+l = list(s)
+s = ''.join(l)
+```
+If you what to add a string in-between of each item, i.e. convert a list of words to a sentence
+```
+s = ' '.join(l)  # s = '[space]'.join(l)
+```
+
 ## Set
 
 ```
