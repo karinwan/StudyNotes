@@ -153,9 +153,12 @@ A Counter is a dict subclass for counting hashable objects. It is a collection w
 ```
 Counter("aabbbccccd")
 # {a:2, b:3, c:4, d:1}
-
-
 ```
 
+## String
 
+Sentence to list of words
+```
+list = string.split()
+```
 
