@@ -87,6 +87,12 @@ sum(list)
 len(list)
 ```
 
+#### Slicing
+```
+# remove last element
+list = list[:-1]
+```
+
 #### Converter
 Sting -> List
 ```
