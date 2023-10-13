@@ -176,6 +176,12 @@ Sentence to list of words
 list = string.split()
 ```
 
+#### Min & Max
+```
+min(list)
+max(list)
+```
+
 #### Operations
 
 | Methods          | Description |
