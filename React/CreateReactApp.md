@@ -33,7 +33,7 @@ cd project_name
 npm start
 ```
 
-Inside that directory, you can run several commands:
+### Inside that directory, you can run several commands:
 
 ```
 npm start
