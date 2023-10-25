@@ -119,8 +119,13 @@ s = ' '.join(l)  # s = '[space]'.join(l)
 sorted(iterable, key=key, reverse=reverse)
 ```
 - **iterable**	(Required) The sequence to sort, list, dictionary, tuple etc.
-- **key**	(Optional) A Function to execute to decide the order. Default is None
-- **reverse**	(Optional) A Boolean. False will sort ascending, True will sort d
+- **key**	(Optional) A Function to execute to decide the order. Default is None. 
+- **reverse**	(Optional) A Boolean. False will sort ascending, True will sort descending. 
+
+Sorting dictionary by its values in decreasing order:
+```
+list = sorted(dict.items(), key=lambda x:x[1], reverse=True)
+```
 
 ## Set
 
