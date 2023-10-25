@@ -40,6 +40,11 @@ Iterating through list with index
 for idx, x in enumerate(list):
 ```
 
+#### List Comprehension
+```
+[print(x) for x in list]
+```
+
 ## Generator
 Generator functions allow you to declare a function that behaves like an iterator, i.e. it can be used in a for loop.
 
