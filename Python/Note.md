@@ -79,7 +79,17 @@ sum_of_first_n = sum(first_n(1000000))
 ```
 EmptyList = []
 NumberList = [1, 2, 3, 4, 5]
+```
+
+#### Initialize lists using the * operator
+```
 ZeroList = [0] * 5
+```
+Be careful when the item being repeated is a list. The list will not be cloned: all the elements will refer to the same list! (The outer list stores references to the same inner list.)
+```
+x = [0]
+y = x * 3     # y = [[0], [0], [0]]
+y[0][0] = 1   # y = [[1], [1], [1]]
 ```
 
 #### Sum
@@ -240,6 +250,24 @@ de.pop()
 | extendleft(iterable) | O(K) | O(1) |
 | reverse() | O(N) | O(1) |
 | rotate() | O(K) | O(1) |
+
+## heapq - Heap queue algorithm / priority queue algorithm
+Heaps are binary trees for which every parent node has a value less than or equal to any of its children. 
+
+heapq.heappush(heap, item)
+Push the value item onto the heap, maintaining the heap invariant.
+
+heapq.heappop(heap)
+Pop and return the smallest item from the heap, maintaining the heap invariant. If the heap is empty, IndexError is raised. To access the smallest item without popping it, use heap[0].
+
+heapq.heappushpop(heap, item)
+Push item on the heap, then pop and return the smallest item from the heap. The combined action runs more efficiently than heappush() followed by a separate call to heappop().
+
+heapq.heapify(x)
+Transform list x into a heap, in-place, in linear time.
+
+heapq.heapreplace(heap, item)
+Pop and return the smallest item from the heap, and also push the new item. The heap size doesn’t change. If the heap is empty, IndexError is raised.
 
 ## DefaultDict
 Defaultdict is a container like dictionaries present in the module collections. Defaultdict is a sub-class of the dictionary class that returns a dictionary-like object. The functionality of both dictionaries and defaultdict are almost same except for the fact that defaultdict never raises a KeyError. It provides a default value for the key that does not exists.
