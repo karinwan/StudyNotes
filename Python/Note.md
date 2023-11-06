@@ -22,6 +22,18 @@ max(list)
 abs()
 ```
 
+## Bitwise Operators
+
+| Operator |	Example |	Meaning | Compound Operator |
+| -------- | ------- | ------- | ----- |
+| & |	a & b |	Bitwise AND | a &= b |
+| \| |	a \| b	| Bitwise OR | a \|= b |
+| ^	| a ^ b |	Bitwise XOR (exclusive OR) | a ^= b |
+| ~ |	~a |	Bitwise NOT | |
+| << |	a << n |	Bitwise left shift | a <<= n |
+| >> |	a >> n |	Bitwise right shift | a >>= n |
+
+
 # Loop
 
 #### range
