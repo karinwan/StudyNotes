@@ -5,6 +5,10 @@ virtualenv vnev
 ```
 source plotting/bin/active
 ```
+Deactivate a virtual environment:
+``` 
+deactivate
+```
 
 ### ecosci backend
 ```
