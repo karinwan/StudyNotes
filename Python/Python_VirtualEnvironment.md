@@ -35,7 +35,7 @@ pip freeze > requirements.txt
 ```
 cd ./backend
 # Create a virutal env named {secend_venv}
-py -m venv venv
+py -3.11 -m venv venv
 # Activate the Virtual Environment
 source venv/Scripts/activate
 # install required packages
