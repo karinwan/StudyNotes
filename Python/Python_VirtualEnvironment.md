@@ -27,7 +27,7 @@ sudo npm run dev
 # if any updates on the dependencies
 cd ./backend
 # Activate the Virtual Environment
-source venv\Scripts\activate
+source venv/bin/activate
 pip freeze > requirements.txt
 ```
 
@@ -37,7 +37,7 @@ cd ./backend
 # Create a virutal env named {secend_venv}
 py -m venv venv
 # Activate the Virtual Environment
-source venv/bin/activate
+source venv/Scripts/activate
 # install required packages
 pip install -r requirements.txt
 # start the fastapi server
