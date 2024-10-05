@@ -15,3 +15,8 @@
       ```
       py --version
       ```
+
+## Setup Python in Visual Studio Code
+1. Install the Python extension in VS Code;
+2. Opening the **Command Palette** (Ctrl+Shift+P), start typing the command **Python: Select Interpreter** and select (Can also use the **Select Python Environment** option on the bottom Status Bar if available);
+3. Choose the interpreter to use.
