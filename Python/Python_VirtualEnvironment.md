@@ -51,3 +51,14 @@ cd ./backend
 source venv/Scripts/activate
 pip freeze > requirements.txt
 ```
+
+## Virtual environment with MiniConda:
+Download MiniConda on MacOS:
+```
+curl -O https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-arm64.sh
+```
+Install:
+```
+bash Miniconda3-latest-MacOSX-arm64.sh
+```
+Miniconda3 will now be installed into this location: `/Users/karinwan/miniconda3`
