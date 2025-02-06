@@ -83,7 +83,7 @@ sudo gitlab-runner start
 
 ### Register the Runner with GitLab
 
-Find your GitLab Registration Token in `GitLab -> Your Project -> Settings -> CI/CD -> Runners`. 
+Find your GitLab Registration Token in **GitLab -> Your Project -> Settings -> CI/CD -> Runners**. 
 
 Replace `<GITLAB_URL>` and `<REGISTRATION_TOKEN>` with your GitLab instance URL and token:
 ```
