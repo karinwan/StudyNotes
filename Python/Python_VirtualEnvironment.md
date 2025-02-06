@@ -13,20 +13,28 @@ deactivate
 ### ecosci backend MAC
 ```
 cd ./backend
-# Create a virutal env named {secend_venv}
+```
+Create a virutal env named {secend_venv}
+```
 python3 -m venv venv
-# Activate the Virtual Environment
+```
+Activate the Virtual Environment
+```
 source venv/bin/activate
-# install required packages
+```
+Install required packages
+```
 pip install -r requirements.txt
-# start the fastapi server
+```
+Start the fastapi server
+```
 sudo npm run build
 sudo npm run dev
 ```
+
+If any updates on the dependencies
 ```
-# if any updates on the dependencies
 cd ./backend
-# Activate the Virtual Environment
 source venv/bin/activate
 pip freeze > requirements.txt
 ```
@@ -34,20 +42,16 @@ pip freeze > requirements.txt
 ### ecosci backend Windows
 ```
 cd ./backend
-# Create a virutal env named {secend_venv}
 py -3.11 -m venv venv
-# Activate the Virtual Environment
 source venv/Scripts/activate
-# install required packages
 pip install -r requirements.txt
-# start the fastapi server
 sudo npm run build
 sudo npm run dev
 ```
+
+If any updates on the dependencies
 ```
-# if any updates on the dependencies
 cd ./backend
-# Activate the Virtual Environment
 source venv/Scripts/activate
 pip freeze > requirements.txt
 ```
@@ -62,3 +66,30 @@ Install:
 bash Miniconda3-latest-MacOSX-arm64.sh
 ```
 Miniconda3 will now be installed into this location: `/Users/karinwan/miniconda3`
+
+Restart shell and verify installation
+```
+source ~/.bashrc  # or source ~/.zshrc (if using Zsh)
+conda --version
+```
+
+### Update Conda
+```
+conda update conda
+```
+
+### Conda Virtual Environment
+- Manages both Python and non-Python dependencies
+- can switch Python versions easily
+- Uses its own dependency resolver, different from `pip`
+```
+conda create -n {myenv} python=3.12.8
+```
+Activates with:
+```
+conda activate {myenv}
+```
+Exit with:
+```
+conda deactivate
+```
