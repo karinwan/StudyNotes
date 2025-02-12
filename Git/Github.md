@@ -65,6 +65,12 @@ git fetch [remote_name]
 git merge [remote_name]/develop
 ```
 
+## Update branch with main/master
+```
+git fetch
+git rebase origin/master
+```
+
 ## Other git commands
 - Copy all files from github repository to local: 
 ```
