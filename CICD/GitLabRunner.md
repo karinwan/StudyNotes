@@ -135,3 +135,65 @@ sudo gitlab-runner register \
    - In the VM Overview section, find Public IP
    - SSH into the VM `ssh azureuser@<VM_PUBLIC_IP>` (exception for using SSH key, see section 4)
 
+### Install GitLab Runner
+
+Download the GitLab Runner binary
+```
+sudo curl -L --output /usr/local/bin/gitlab-runner "https://s3.dualstack.us-east-1.amazonaws.com/gitlab-runner-downloads/latest/binaries/gitlab-runner-linux-amd64"
+
+```
+
+Give it execute permissions
+```
+sudo chmod +x /usr/local/bin/gitlab-runner
+```
+
+Create a GitLab Runner user
+```
+sudo useradd --comment 'GitLab Runner' --create-home gitlab-runner --shell /bin/bash
+```
+
+Setup the password as `ece651`
+```
+sudo passwd gitlab-runner
+```
+
+Install dependencies
+```
+sudo apt update && sudo apt install -y curl git docker.io
+```
+
+Enable and start Docker
+```
+sudo systemctl enable docker
+sudo systemctl start docker
+```
+
+### Register the Runner with GitLab
+
+Find your GitLab Registration Token in **GitLab -> Your Project -> Settings -> CI/CD -> Runners**. 
+
+Replace `<GITLAB_URL>` and `<REGISTRATION_TOKEN>` with your GitLab instance URL and token:
+```
+sudo gitlab-runner register \
+  --url "https://git.uwaterloo.ca" \
+  --registration-token "<REGISTRATION_TOKEN>" \
+  --name "GitLabRunner-VM" \
+  --executor "docker" \
+  --default image "alpine" or "ubuntu:latest"
+```
+
+Configuration (with the authentication token) was saved in "/etc/gitlab-runner/config.toml"
+
+Start and Enable the Runner
+```
+sudo gitlab-runner install --user=gitlab-runner --working-directory=/home/gitlab-runner
+```
+```
+sudo gitlab-runner start
+```
+```
+sudo systemctl enable gitlab-runner
+```
+
+
