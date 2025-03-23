@@ -98,4 +98,40 @@ sudo gitlab-runner register \
 
 
 
+## Azure VM - Linux Virtual Machine
+
+### Create a Linux VM
+1. Go to Azure Portal. 
+
+2. Create a Virtual Machine
+   - Virtual Machines
+   - Linux Virtual Machine
+   - Create
+
+3. Configure basic settings
+   - Select your Azure subscription
+   - Resource Group: Create new, name it something like `GitLabRunner-651`
+   - Virtual Machine Name (e.g., `GitLabRunner-VM`)
+   - Region: Choose a nearby Azure region
+   - Image: Ubuntu 22.04 LTS
+   - Size: Standard_B1s
+
+4. Set up authentication
+   - Authentication type: SSH public key
+   - Username (e.g., azureuser).
+   - If using SSH key:
+       - Download your private key. It should be named something like `GitLabRunner-VM_key.pem`
+       - Move to the directory where your key is located and set the correct permissions:  `chmod 400 GitLabRunner-VM_key.pem`
+       - SSH into your VM by:  `ssh -i GitLabRunner-VM_key.pem azureuser@your-vm-ip`
+
+5. Networking
+   - Allow SSH (port 22)
+
+6. Review & Create
+   - Review + Create
+   - Create
+
+7. Connect to your VM
+   - In the VM Overview section, find Public IP
+   - SSH into the VM `ssh azureuser@<VM_PUBLIC_IP>` (exception for using SSH key, see section 4)
 
