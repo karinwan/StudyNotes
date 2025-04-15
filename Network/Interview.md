@@ -19,7 +19,7 @@ TCP/IP四层模型：
 1. 网络层`Internet Layer`（对应OSI的网络层）
 1. 网络接口层`Network Access Layer`（对应OSI的物理层和数据链路层）
 
-<img width="300" alt="Screenshot 2025-04-15 at 3 00 56 AM" src="https://github.com/user-attachments/assets/11424a1b-3e99-4149-ac6b-ade748a3ffd7" />
+<img width="360" alt="Screenshot 2025-04-15 at 3 00 56 AM" src="https://github.com/user-attachments/assets/11424a1b-3e99-4149-ac6b-ade748a3ffd7" />
 
 
 ### 什么是路由和交换？
