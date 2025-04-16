@@ -27,6 +27,46 @@
 - `Activity` 是 Android 应用的入口，每一个`Activity`表示一个用户可以看到的界面。
 - 它会和**操作系统**交互，例如**管理生命周期**、**响应后退键**等。
 
+#### 任务栈 `Task Stack`
+- Android 系统为管理 Activity 启动和切换而维护的“**后进先出**（LIFO）”结构，每个任务栈代表一组**关联**的 Activity 页面。
+- 每次启动一个新的 Activity，系统会将它压入当前**栈顶**
+- 用户按**返回键**，系统会将它从栈顶弹出
+- 整体结构类似 栈`Stack` 数据结构 → 后进先出
+
+#### Activity 启动模式 `Launch Modes`
+
+| 启动模式         | 是否复用实例 | 是否清栈 | 特点 / 场景                        |
+|------------------|--------------|----------|------------------------------------|
+| `standard`         |  X         |  X     | 默认，每次启动新实例                |
+| `singleTop`        |  栈顶复用   |  X     | 栈顶存在时复用，常用于通知栏跳转     |
+| `singleTask`       |  栈中复用   |  清除上方，并调用`onNewIntent()`传递新参数 | 全局唯一入口页面，如主页、登录页    |
+| `singleInstance`   |  独立栈     |  清除上方 | 独立任务栈，常用于浮窗或独立模块    |
+
+标准 `standard`：
+- 默认模式，每次启动都会创建新的实例，即使它已经在栈中存在。
+- 易出现重复页面 → “Activity 多次叠加”
+  ```xml
+  <activity android:name=".DetailActivity" />
+  ```
+
+栈顶复用 `singleTop`：
+- 如果 Activity 已经在**栈顶**，不会重新创建，只会调用`onNewIntent()`。
+- 适用：通知栏点击跳转、页面反复刷新
+  ```xml
+  <activity android:name=".NewsActivity" android:launchMode="singleTop" />
+  ```
+
+全栈唯一 `singleTask`：
+- 如果栈中已有该 Activity 实例，系统会复用，并清除其上的所有 Activity。
+- 适用：主页、登录页等“唯一入口”页面
+- `android:launchMode="singleTask"`
+
+单例 + 独立任务栈 `singleInstance`：
+- 该 Activity 会被放入一个独立的任务栈中，其他 Activity 无法与之共存
+- 适用：浮窗、插件系统
+- `android:launchMode="singleInstance"`
+
+
 #### Fragment
 
 - `Fragment` 是一种可以嵌套在`Activity`中的 **UI 模块**，它**不是独立存在**的，必须附着在某个`Activity`上；
@@ -137,11 +177,92 @@
 - `onPause()` → `onStop()` → `onDestroy()`
 - `onRestart()` → `onStart()` → `onResume()`
 
+#### View
+- The fundamental building block of Android UI (a single UI element).
+- It's responsible for:
+  - Measuring itself (`onMeasure`)
+  - Laying out (`onLayout`)
+  - Drawing content (`onDraw`)
+  - Handling user input (click, touch, etc.)
+- Examples: `Button`, `TextView`, `ImageView` all extend View.
+
+#### 绘制流程(三大阶段)
+1. `measure()`
+   - 确定每个 View 的**大小** (宽度和高度)
+   - 重写 `onMeasure()`，从顶层**父 View **到**子 View ****递归调用**`measure()`方法，并**回调**每个 View 的`onMeasure()`方法
+2. `layout()`
+   - 确定每个 View 在**父容器**中的**位置**（左、上、右、下坐标），进行页面的布局；
+   - 重写 `onLayout()`，从**根 View **向**子 View **递归调用`layout()`方法，并回调每个 View 的`onLayout()`方法。
+3. `draw()`
+   - 将 View 实际绘制到屏幕上（包括背景、内容、子 View）
+   - `draw()` 
+     - `drawBackground()` 
+     - `onDraw()` 绘制自身内容，如文本、图形
+     - `dispatchDraw()` 绘制子 View
+  - 自定义 View 时可重写：`onDraw(canvas: Canvas)`
+
+#### ViewGroup
+- a container that holds multiple Views.
+- Measure & layout child Views
+- Organize UI elements into a structure
+- Control drawing order & event dispatch
+- Examples: 
+  - `LinearLayout`
+  - `ConstraintLayout`
+  - `FrameLayout`
+  - `RecyclerView`
+
+#### 层级关系
+- `Activity` → `Window` → `DecorView`（根`root ViewGroup`） → 你的布局 `ViewGroup` →
+  - 普通 `View`
+  - `Fragment` 的容器 → Fragment 返回的 `View`
+- `Activity`是整个 UI 系统的控制入口；
+- `Window` 是 Activity 的**窗口**，**承载** UI；
+- `View`是实际显示在屏幕上的**元素**；
+- `Fragment`是“嵌套的可重用页面”，**插入到View树**中。
+
+#### 触摸事件 `Touch Event`
+- 用户在屏幕上操作时，Android 系统生成的`MotionEvent`对象，用于驱动 UI 响应**点击**、**滑动**、**缩放**等交互。
+- 由`Activity`**向下传递**，经过`ViewGroup`到子`View`
+  - `Activity`调用`dispatchTouchEvent()`开始事件分发
+  - `onInterceptorTouchEvent`为true表示**拦截**事件，进行处理（只`ViewGroup`有）；
+  - `onTouchEvent`为true表示事件**消费**(实际处理事件），如果到最后都不处理就会返回到`Activity`的`onTouchEvent`处理；
+    - 一旦某个 View 返回了 true，就不会再继续向下或横向传递
+
+---
+
+### Service
+- **无界面**后台组件
+- 可执行**长期任务**
+- 启动方式：直接启动`startService()` / 绑定`bindService()`
+- 生命周期**独立**于UI（Activity 被销毁，它仍可运行），适合持续任务（音乐播放、后台下载、定位、计步器或运动记录）
+
+#### 类型
+- 前台服务：通过**通知**让用户感知，优先级高（`startForeground`）。常见有消息通知。
+- 后台服务：8.0 后受限制，推荐`JobScheduler`。
+
+#### 启动方式
+- startService(): 启动后在后台**独立无限期运行**，启动组件被销毁也不影响；
+- bindService(): 绑定组件运行，**解绑**即停止并销毁；
+- startForeground(): 前台服务，必须展示通知
+
+---
+
+### BroadcastReceiver
+- 响应广播事件`Broadcast`的组件
+- 可接收系统广播（如网络变化、电量变化）或自定义广播（如登录成功、订单支付成功）
+- 注册方式：静态`Manifest`（系统托管、常驻，无需app启动即可接收广播）或动态`registerReceiver()`（应用内与注册组件绑定，仅前台进程可以接收）
+- 生命周期**极短**，仅执行`onReceive()`
+
+---
+
+### ContentProvide
+
 ---
 
 ## Context
 
-Android提供的全局环境接口`interface`，用于：
+Android提供的全局环境/通用接口`interface`，抽象类，用于：
 - 访问**资源文件**（如字符串、颜色、图片）
 - 获取**系统服务**（如剪贴板、通知、布局服务等）
 - 启动 `Activity`、`Service`、`Broadcast` 等**组件**
@@ -155,10 +276,14 @@ Android提供的全局环境接口`interface`，用于：
 
 ### Activity Context
 - 用于**界面**操作
-- 获取方式：`Activity`本身就是`Context`
+- 获取方式：`Activity`**本身就是**`Context`
 - 生命周期：跟随`Activity`
 - 示例用途：弹`Toast`、显示`Dialog`、加载布局等 UI-related tasks
-- 生命周期短，不应在**单例**`Singleton`或**长生命周期**对象中持有，否则容易导致**内存泄漏**
+- 生命周期短，会持有视图引用，不应在**单例**`Singleton`或**长生命周期**对象中持有，否则容易导致**内存泄漏**
+
+### 对比
+- `Application`是`Context`的**子类**，属于整个app生命周期的**全局**`Context`
+- `Activity` 是 Android 的 UI 组件之一，本身**继承**自 `Context`，因此当我们说`Activity Context`时，实际上就是指当前`Activity`**作为上下文环境**来使用。这两者在对象上是同一个，但概念不同：一个代表**界面组件**，一个代表**访问系统资源的能力**。
 
 ---
 
@@ -195,8 +320,6 @@ Parcelable 和 Serializable 都是用于对象序列化的接口，但 Parcelabl
 ---
 
 ### Why does an Android App lag?
-
-### What is Context? How is it used? 
 
 ### Tell all the Android application components. 
 
