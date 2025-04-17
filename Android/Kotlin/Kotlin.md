@@ -1,8 +1,23 @@
-## Type System
+## Kotlin 和 Java 的区别
+Kotlin 比 Java 更简洁、安全、支持函数式和协程，并具有空安全和扩展函数等高级功能。
 
-- default non-nullable, null to non-nullable cases compilar error
+## Type System 空安全系统
+编译时检查 `nullable` 类型，通过 `nullable` 和 `非-nullable` 类型区分**可空性**，从语法层面预防 `NullPointerException` 的出现
+  ```kotlin
+  // 非空
+  val s: String = "hello"
+  // 可空
+  val s: String? = null
+  // 安全调用
+  s?.length
+  // Elvis 操作符 '?:'
+  s?.length ?: 0
+  // 非空断言
+  s!!.length
+  ```
 
- ## Callbacks and Listeners
+
+## Callbacks and Listeners
 
  - much more concise
  - use of lambdas with Jetpack Compose makes even more concise
