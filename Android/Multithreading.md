@@ -81,3 +81,28 @@ Looper 的**睡眠机制**底层依赖的是`epoll_wait()`，它通过`nativePol
 - 数据流: 被观察的数据/任务	`Observable` / `Flowable`（大数据）
 - 操作符: 对数据流做转换、过滤、组合等操作	`map`、`flatMap`、`filter`、`zip`、`debounce` 等
 - 错误处理: 捕获并处理异常	`onErrorResumeNext()`、`retry()`
+
+
+## 进程间通信（IPC）
+
+### Binder
+- 它基于 Linux 内核中的 Binder 驱动
+- 实现了：一个进程可以像调用本地方法一样调用另一个进程的方法
+```
+Client
+  ↓ 调用代理接口
+Binder Proxy
+  ↓ 跨进程传输（内核 Binder 驱动）
+Binder 驱动
+  ↓
+Binder Stub（Server 端）
+  ↓
+实际服务（处理业务逻辑）
+```
+
+### AIDL
+- 基于 Binder 的接口定义工具，自动生成 `Stub/Proxy`
+
+
+
+
