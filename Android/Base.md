@@ -211,6 +211,21 @@
   - `ConstraintLayout`
   - `FrameLayout`
   - `RecyclerView`
+    - 调用 `onCreateViewHolder` 创建新 `ViewHolder`
+    - 通过缓存和复用`onBindViewHolder`，避免每次滚动都重新创建和绑定View，从而大大提高性能和内存效率。
+    ```scss
+    初始化：
+    RecyclerView 创建几个可见 item 的 ViewHolder
+      ↓
+    滑动离屏后，旧的 ViewHolder 被放入缓存池
+      ↓
+    新 item 出现，先检查缓存池是否有可复用 ViewHolder
+      ↓
+      有 → 直接拿来用（onBindViewHolder 更新数据）
+      没有 → 调用 onCreateViewHolder 创建新 ViewHolder
+    ```
+
+
 
 #### 层级关系
 - `Activity` → `Window` → `DecorView`（根`root ViewGroup`） → 你的布局 `ViewGroup` →
