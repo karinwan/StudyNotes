@@ -229,6 +229,10 @@
   - `onTouchEvent`为true表示事件**消费**(实际处理事件），如果到最后都不处理就会返回到`Activity`的`onTouchEvent`处理；
     - 一旦某个 View 返回了 true，就不会再继续向下或横向传递
 
+上下和左右滑动事件冲突
+- 核心是通过手势方向判断，在 `onInterceptTouchEvent()` 或 `dispatchTouchEvent()` 中根据滑动方向决定**是否拦截**事件。
+
+
 ---
 
 ### Service
@@ -286,6 +290,9 @@ Android提供的全局环境/通用接口`interface`，抽象类，用于：
 - `Activity` 是 Android 的 UI 组件之一，本身**继承**自 `Context`，因此当我们说`Activity Context`时，实际上就是指当前`Activity`**作为上下文环境**来使用。这两者在对象上是同一个，但概念不同：一个代表**界面组件**，一个代表**访问系统资源的能力**。
 
 ---
+## Intent 
+- Android 中用于在**组件之间传递消息**的对象，可以用于启动 Activity、Service、发送广播等。
+- 可携带数据（`putExtra`），如携带`Bundle`：`intent.putExtras(bundle)`
 
 ## Bundle
 - 用于在组件之间传递数据的容器；
@@ -316,6 +323,38 @@ Parcelable 和 Serializable 都是用于对象序列化的接口，但 Parcelabl
 ### 对象序列化
 - 序列化是指将一个对象转换成**可存储**或**可传输**的格式（如写入`Bundle`、`Intent`、保存到磁盘等）；
 - `Parcelable`和`Serializable`是在 Android 中常用的两种方式。
+
+---
+
+### 可以在子线程里面刷新UI吗？如果我非要在子线程里刷新了UI呢？会怎么样？会抛出什么异常？
+
+- 不可以在子线程中刷新 UI
+- 如果强行操作 UI 会抛出 `CalledFromWrongThreadException` 异常
+- Android 的 UI 控件（如 TextView、Button）只能在 **主线程**`Main Thread / UI Thread` 中访问，是因为：
+  - Android 的 UI 系统 不是线程安全的
+  - 子线程更新 UI 可能导致 **界面状态不一致**、崩溃
+- 切回主线程更新 UI
+  1. 使用 `runOnUiThread`
+     ```kotlin
+     runOnUiThread { textView.text = "Hello" }
+     ```
+  2. 使用 `Handler(Looper.getMainLooper())`
+     ```kotlin
+     val handler = Handler(Looper.getMainLooper())
+     handler.post {
+         textView.text = "Hello"
+     }
+     ```
+  3. 使用协程（推荐）
+     ```kotlin
+     lifecycleScope.launch {
+          val data = withContext(Dispatchers.IO) {
+              // 子线程做网络请求
+              "Network Result"
+          }
+          textView.text = data  // 回到主线程更新 UI
+     }
+     ```
 
 ---
 
